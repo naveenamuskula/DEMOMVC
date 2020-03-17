@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DEMOMVC.Models.EMPDATA>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Extractdate","DateAssign"))
+{
+    <table>
+        <tr>
+            <td>Startdate</td>
+            <td>@Html.TextBox("txtstartdate")</td>
+        </tr>
+        <tr>
+            <td>Enddate</td>
+            <td>@Html.TextBox("txtenddate")</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="submit" /></td>
+        </tr>
+    </table>
+    if (ViewBag.S != null)
+    {
+    <table>
+    <tr>
+        <td>EMPNO</td>
+        <td>ENAME</td>
+        <td>JOB</td>
+        <td>MGR</td>
+        <td>HIREDATE</td>
+        <td>SAL</td>
+        <td>COMM</td>
+        <td>DEPTNO</td>
+    </tr>
+    @foreach (var i in ViewBag.S)
+    {
+    <tr>
+        <td>@i.EMPNO</td>
+        <td>@i.ENAME</td>
+        <td>@i.JOB</td>
+        <td>@i.MGR</td>
+        <td>@i.HIREDATE</td>
+        <td>@i.SAL</td>
+        <td>@i.COMM</td>
+        <td>@i.DEPTNO</td>
+    </tr>
+    }
+</table>  
+    }
+}

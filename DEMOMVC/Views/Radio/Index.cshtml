@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("radiobtn", "Radio"))
+{
+    <table>
+
+        <tr>
+            <td>@Html.RadioButton("rdb", "hd", new { onclick = "hire();" })</td>
+            <td>@Html.TextBox("txtsd", "", new { @disabled = "true" })</td>
+            <td>@Html.TextBox("txted", "", new { @disabled = "true" })</td>
+        </tr>
+        <tr>
+            <td>@Html.RadioButton("rdb", "deptno", new { onclick = "dept();" })</td>
+            <td>@Html.DropDownList("ddldeptno", new SelectList(ViewBag.d, "Deptno", "Dname"), "Select", new { @disabled = "true" })</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Extract" /></td>
+        </tr>
+    </table>
+
+    if (ViewBag.list != null)
+    {
+        <table>
+            <tr>
+                <td>EMPNO</td>
+                <td>ENAME</td>
+                <td>JOB</td>
+                <td>MGR</td>
+                <td>HIREDATE</td>
+                <td>SAL</td>
+                <td>COMM</td>
+                <td>DEPTNO</td>
+
+            </tr>
+            @foreach (var i in ViewBag.list)
+            {
+
+
+                <tr>
+                    <td>@i.EMPNO</td>
+                    <td>@i.ENAME</td>
+                    <td>@i.JOB</td>
+                    <td>@i.MGR</td>
+                    <td>@i.HIREDATE</td>
+                    <td>@i.SAL</td>
+                    <td>@i.COMM</td>
+                    <td>@i.DEPTNO</td>
+
+                </tr>
+
+            }
+        </table>
+    }
+}
+<script>
+    function hire() {
+        document.getElementById("ddldeptno").disabled = true;
+        document.getElementById("txtsd").disabled = false;
+        document.getElementById("txted").disabled = false;
+    }
+    function dept() {
+        document.getElementById("ddldeptno").disabled = false;
+        document.getElementById("txtsd").disabled = true;
+        document.getElementById("txted").disabled = true;
+
+
+    }
+</script>
+
+

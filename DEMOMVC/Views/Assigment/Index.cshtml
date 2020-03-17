@@ -1,0 +1,59 @@
+﻿@model DEMOMVC.Models.EMPDATA
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("updatebtn", "Assigment"))
+{
+    <table>
+        <tr>
+            <td>Empno</td>
+            <td>@Html.TextBoxFor(a => a.EMPNO,"", new { onblur = "func1();" })</td>
+        </tr>
+        <tr>
+            <td>ENAME</td>
+            <td>@Html.TextBoxFor(a => a.ENAME)</td>
+        </tr>
+        <tr>
+            <td>JOB</td>
+            <td>@Html.TextBoxFor(a => a.JOB)</td>
+        </tr>
+        <tr>
+            <td>MGR</td>
+            <td>@Html.TextBoxFor(a => a.MGR)</td>
+        </tr>
+        <tr>
+            <td>HIREDATE</td>
+            <td>@Html.TextBoxFor(a => a.HIREDATE)</td>
+        </tr>
+        <tr>
+            <td>Sal</td>
+            <td>@Html.TextBoxFor(a => a.SAL)</td>
+        </tr>
+        <tr>
+            <td>Comm</td>
+            <td>@Html.TextBoxFor(a => a.COMM)</td>
+        </tr>
+        <tr>
+            <td>Deptno</td>
+            <td>@Html.TextBoxFor(a => a.DEPTNO)</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="update" /></td>
+        </tr>
+    </table>
+    if (ViewBag.msg != null)
+    {
+        @ViewBag.msg;
+    }
+}
+<script>
+    function func1()
+    {
+        var empno = document.getElementById("EMPNO").value;
+        window.location.href = "/Assigment/Extract?e=" + empno;
+    }
+</script>
+
+

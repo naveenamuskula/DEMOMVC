@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DEMOMVC.Models.EMPDATA>
+@{
+    ViewBag.Title = "GetDetails";
+}
+
+<h2>GetDetails</h2>
+@using (Html.BeginForm())
+
+{
+    <table>
+        <tr>
+            <td>Enter deptno</td>
+            <td>
+                @Html.DropDownList("ddlDeptno",
+                new SelectList(ViewBag.DL, "Deptno", "Dname",ViewBag.S),
+                "Select", new { onblur = "fun1();" })
+            </td>
+        </tr>
+        
+    </table>
+    if(Model!=null)
+    {
+    <table>
+    <tr>
+        <td>Empno</td>
+        <td>Ename</td>
+        <td>Job</td>
+        <td>Mgr</td>
+        <td>Hiredate</td>
+        <td>Salary</td>
+        <td>Commission</td>
+        <td>Deptno</td>
+    </tr>
+    @foreach (var E in Model)
+    {
+        <tr>
+            <td>@E.EMPNO</td>
+            <td>@E.ENAME</td>
+            <td>@E.JOB</td>
+            <td>@E.MGR</td>
+            <td>@E.HIREDATE</td>
+            <td>@E.SAL</td>
+            <td>@E.COMM</td>
+            <td>@E.DEPTNO</td>
+
+        </tr>
+    }
+</table>
+    }
+}
+<script>
+    function fun1()
+    {
+        var dno = document.getElementById("ddlDeptno").value;
+        window.location.href = "/Database/SendDetails?d="+dno;
+    }
+
+</script>

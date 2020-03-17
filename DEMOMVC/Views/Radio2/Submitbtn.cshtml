@@ -1,0 +1,46 @@
+﻿@model DEMOMVC.Models.EMPDATA
+@{
+    ViewBag.Title = "Submitbtn";
+}
+
+<h2>Submitbtn</h2>
+@using(Html.BeginForm())
+{
+<table>
+    <tr>
+        <td>Empno</td>
+        <td>@Html.TextBoxFor(a => a.EMPNO)</td>
+        @*if we are using ViewBag we should use unbound controls only
+        <td>@Html.TextBox("Empno",(object)ViewBag.S.EMPNO)</td>*@
+    </tr>
+    <tr>
+        <td>Ename</td>
+        <td>@Html.TextBoxFor(a => a.ENAME)</td>
+    </tr>
+    <tr>
+        <td>Job</td>
+        <td>@Html.TextBoxFor(a => a.JOB)</td>
+    </tr>
+    <tr>
+        <td>MGR</td>
+        <td>@Html.TextBoxFor(a => a.MGR)</td>
+    </tr>
+    <tr>
+        <td>Hiredate</td>
+        <td>@Html.TextBoxFor(a => a.HIREDATE)</td>
+    </tr>
+    <tr>
+        <td>Sal</td>
+        <td>@Html.TextBoxFor(a => a.SAL)</td>
+    </tr>
+    <tr>
+        <td>Commission</td>
+        <td>@Html.TextBoxFor(a => a.COMM)</td>
+    </tr>
+    <tr>
+        <td>Deptno</td>
+        <td>@Html.TextBoxFor(a => a.DEPTNO)</td>
+    </tr>
+</table>
+}
+

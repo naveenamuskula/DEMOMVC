@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DEMOMVC.Models.EMPDATA>
+@{
+    ViewBag.Title = "GetEmp";
+}
+
+<h2>GetEmp</h2>
+@using (Html.BeginForm("DeleteEmp", "Database"))
+
+{
+    <table>
+        <tr>
+            <td>Enter Empno</td>
+            <td>
+                @Html.DropDownList("ddlEmpno",
+            new SelectList(ViewBag.E, "Empno", "Empno"),
+             "Select")
+            </td>
+            <td><input type="submit" value="Delete" onclick="return fun1();" /></td>
+        </tr>
+    </table>
+    if (ViewBag.Emp != null)
+    {
+        @ViewBag.Emp;
+    }
+}
+<script>
+    function fun1() {
+        var empno = document.getElementById("ddlEmpno").value;
+        var result = confirm("Are you sure to delete?");
+        if (result) {
+            return true;
+        }
+        else
+            return false;
+    }
+</script>
+
+

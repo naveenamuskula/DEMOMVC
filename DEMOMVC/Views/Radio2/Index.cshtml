@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DEMOMVC.Models.EMPDATA>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Submitbtn","Radio2"))
+{
+    if (Model!= null)
+    {
+<table>
+    <tr>
+        <td>EMPNO</td>
+        <td>ENAME</td>
+        <td>JOB</td>
+        <td>MGR</td>
+        <td>HIREDATE</td>
+        <td>SAL</td>
+        <td>COMM</td>
+        <td>DEPTNO</td>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            @*if we are not using submit btn and want to  display the record after selecting radio btn
+            <td>@Html.RadioButton("rdb",i.EMPNO,new { onclick = "func(this.value);" })</td>*@
+            @*we write the code in sctipt tag and BeginForm will be empty*@
+            <td>@Html.RadioButton("rdb",i.EMPNO)</td>
+            <td>@i.EMPNO</td>
+            <td>@i.ENAME</td>
+            <td>@i.JOB</td>
+            <td>@i.MGR</td>
+            <td>@i.HIREDATE</td>
+            <td>@i.SAL</td>
+            <td>@i.COMM</td>
+            <td>@i.DEPTNO</td>
+        </tr>
+    }
+</table>
+<table>
+    <tr>
+        <td><input type="submit" value="submit" /></td>
+    </tr>
+</table>
+    }
+}
+<script>
+    function func(empno)
+    {
+        window.location.href = "/Radio2/Submitbtn?E=" + empno;
+    }
+</script>
+
